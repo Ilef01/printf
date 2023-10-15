@@ -23,6 +23,7 @@ int _printf(const char *format, ...)
 	for (i = 0; i < formatLen; i++)
 	{
 		_putchar(format[i]);
+		charCount++;
 	}
 
 	va_end(allargs);
