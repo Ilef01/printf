@@ -10,19 +10,20 @@
  */
 int _printf(const char *format, ...)
 {
-	int i, charCount, formatLen;
-
+	int charCount;
+	const char *formatPtr;
 	va_list allargs;
 
+	formatPtr = format;
 	charCount = 0;
-	formatLen = _strlen(format);
 
 	va_start(allargs, format);
 
 	/* blindly print characters without substitution */
-	for (i = 0; i < formatLen; i++)
+	while (*formatPtr != '\0')
 	{
-		_putchar(format[i]);
+		_putchar(*formatPtr);
+		formatPtr++;
 		charCount++;
 	}
 
