@@ -19,7 +19,7 @@ int _printf(const char *format, ...)
 
 	va_start(allargs, format);
 
-	/* visit characters, while substituting in as necessary */
+	/* blindly print characters without substitution */
 	for (i = 0; i < formatLen; i++)
 	{
 		_putchar(format[i]);
