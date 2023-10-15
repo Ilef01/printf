@@ -1,4 +1,5 @@
 #include "main.h"
+#include <stdarg.h>
 
 /**
  * _printf - Prints a formatted string to the standard output stream.
@@ -9,7 +10,22 @@
  */
 int _printf(const char *format, ...)
 {
-	/* TODO */
-	return (0);
-}
+	int i, charCount, formatLen;
 
+	va_list allargs;
+
+	charCount = 0;
+	formatLen = _strlen(format);
+
+	va_start(allargs, format);
+
+	/* visit characters, while substituting in as necessary */
+	for (i = 0; i < formatLen; i++)
+	{
+		_putchar(format[i]);
+	}
+
+	va_end(allargs);
+
+	return (charCount);
+}
