@@ -8,6 +8,6 @@ int _printf(const char *format, ...);
 int _putchar(char ch);
 
 /* Returns the length of a string. */
-int _strlen(char *s);
+int _strlen(const char *s);
 
 #endif
