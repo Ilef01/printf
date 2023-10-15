@@ -10,4 +10,7 @@ int _putchar(char ch);
 /* Returns the length of a string. */
 int _strlen(const char *s);
 
+/* Prints the provided string to the screen */
+void _puts(char *s);
+
 #endif
