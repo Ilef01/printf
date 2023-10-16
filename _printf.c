@@ -1,6 +1,8 @@
 #include "main.h"
 #include <stdarg.h>
 
+void substitute(va_list allargs, int *charCount, char nextSymbol);
+
 /**
  * _printf - Prints a formatted string to the standard output stream.
  * @format: The character string, that will contain zero or more directives.
@@ -26,21 +28,7 @@ int _printf(const char *format, ...)
 		if (symbol == '%')
 		{
 			nextSymbol = *(formatPtr + 1);
-			switch (nextSymbol)
-			{
-			case 'c':
-				_subChar(allargs, &charCount);
-				break;
-			case 's':
-				_subStr(allargs, &charCount);
-				break;
-			case '%':
-				_putchar('%');
-				charCount++;
-				break;
-			default:
-				break;
-			}
+			substitute(allargs, &charCount, nextSymbol);
 			formatPtr += 2; /* Skip past the char after the % */
 		}
 		else
@@ -53,4 +41,33 @@ int _printf(const char *format, ...)
 	va_end(allargs);
 
 	return (charCount);
+}
+
+/**
+ * substitute - Prints characters, depending on the character that came after
+ *              the % sign in the format specifier.
+ * @allargs: The va_list item that contains the arguments passed into _printf.
+ * @charCount: The number of characters that have been printed so far.
+ * @nextSymbol: The character that came after the % sign of the potential
+ *              format specifier.
+ * Description: Prints characters, depending on the character that came after
+ *              the % sign in the format specifier.
+ */
+void substitute(va_list allargs, int *charCount, char nextSymbol)
+{
+	switch (nextSymbol)
+	{
+	case 'c':
+		_subChar(allargs, charCount);
+		break;
+	case 's':
+		_subStr(allargs, charCount);
+		break;
+	case '%':
+		_putchar('%');
+		(*charCount)++;
+		break;
+	default:
+		break;
+	}
 }
