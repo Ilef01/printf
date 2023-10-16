@@ -1,9 +1,6 @@
 #include "main.h"
 #include <stdarg.h>
 
-void substituteChar(va_list allargs, int *charCount);
-void substituteString(va_list allargs, int *charCount);
-
 /**
  * _printf - Prints a formatted string to the standard output stream.
  * @format: The character string, that will contain zero or more directives.
@@ -32,10 +29,10 @@ int _printf(const char *format, ...)
 			switch (nextSymbol)
 			{
 			case 'c':
-				substituteChar(allargs, &charCount);
+				_subChar(allargs, &charCount);
 				break;
 			case 's':
-				substituteString(allargs, &charCount);
+				_subStr(allargs, &charCount);
 				break;
 			case '%':
 				_putchar('%');
@@ -56,36 +53,4 @@ int _printf(const char *format, ...)
 	va_end(allargs);
 
 	return (charCount);
-}
-
-/**
- * substituteChar - Prints the next character found in the va_list of
- *                  arguments provided.
- * @allargs: The va_list that contains the char to be printed.
- * @charCount: Pointer to the number of chars that have been printed so far.
- * Description: Prints the next character found in the va_list of
- *              arguments provided.
- */
-void substituteChar(va_list allargs, int *charCount)
-{
-	_putchar(va_arg(allargs, int));
-	(*charCount)++;
-}
-
-/**
- * substituteString - Prints the next string found in the va_list of
- *                    arguments provided.
- * @allargs: The va_list that contains the string to be printed.
- * @charCount: Pointer to the number of chars that have been printed so far.
- * Description: Prints the next string found in the va_list of
- *              arguments provided.
- */
-void substituteString(va_list allargs, int *charCount)
-{
-	char *printedStr;
-
-	printedStr = va_arg(allargs, char *);
-	_puts(printedStr);
-	/* add up all chars in the string */
-	(*charCount) += _strlen(printedStr);
 }
