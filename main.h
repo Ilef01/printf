@@ -20,4 +20,7 @@ void _subChar(va_list allargs, int *charCount);
 /* Prints the next string found in the va_list of arguments provided. */
 void _subStr(va_list allargs, int *charCount);
 
+/*Prints the next integer found in the va_list of arguments provided. */
+void _subDecimal(va_list allargs, int *charCount);
+
 #endif

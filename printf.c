@@ -67,6 +67,9 @@ void substitute(va_list allargs, int *charCount, char nextSymbol)
 		_putchar('%');
 		(*charCount)++;
 		break;
+	case 'd':
+		_subDecimal(allargs, charCount);
+		break;
 	default:
 		break;
 	}
