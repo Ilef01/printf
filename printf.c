@@ -70,6 +70,8 @@ void substitute(va_list allargs, int *charCount, char nextSymbol)
 	case 'd':
 		_subDecimal(allargs, charCount);
 		break;
+	case 'i':
+		_subInt(allargs, charCount);
 	default:
 		break;
 	}
