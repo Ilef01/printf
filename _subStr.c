@@ -13,13 +13,13 @@
  */
 int _subStr(va_list allargs, int *charCount)
 {
-	int returnVal;
+	int Val;
 	char *printedStr;
 
 	printedStr = va_arg(allargs, char *);
-	returnVal = _puts(printedStr);
+	Val = _puts(printedStr);
 
-	if (returnVal < 0)
+	if (Val < 0)
 		return (-1);
 
 	/* add up all chars in the string */
