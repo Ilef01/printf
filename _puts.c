@@ -3,7 +3,8 @@
 /**
  * _puts - Prints a string, followed by a new line.
  * @str: The string to print.
- * Description: Prints a string, followed by a new line to stdout.
+ * Description: Prints a string to stdout.
+ * 				Does not print a new line at the end of the string.
  * Return: Nothing.
  */
 void _puts(char *str)
@@ -15,6 +16,4 @@ void _puts(char *str)
 	{
 		_putchar(str[i]);
 	}
-	_putchar('\n');
 }
-
