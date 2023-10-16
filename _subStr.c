@@ -2,7 +2,7 @@
 #include <stdarg.h>
 
 /**
- * subStr - Prints the next string found in the va_list of
+ * _subStr - Prints the next string found in the va_list of
  *                    arguments provided.
  * @allargs: The va_list that contains the string to be printed.
  * @charCount: Pointer to the number of chars that have been printed so far.
