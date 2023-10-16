@@ -12,13 +12,13 @@ int _putchar(char ch);
 int _strlen(const char *s);
 
 /* Prints the provided string to the screen, without a newline at the end */
-void _puts(char *s);
+int _puts(char *s);
 
 /* Prints the next character found in the va_list of arguments provided. */
 void _subChar(va_list allargs, int *charCount);
 
 /* Prints the next string found in the va_list of arguments provided. */
-void _subStr(va_list allargs, int *charCount);
+int _subStr(va_list allargs, int *charCount);
 
 /*Prints the next integer found in the va_list of arguments provided. */
 void _subDecimal(va_list allargs, int *charCount);
