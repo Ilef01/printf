@@ -11,9 +11,26 @@
  */
 void _subDecimal(va_list allargs, int *charCount)
 {
-	char integer;
+	int num = va_arg(allargs, int); /* get the number */
+	int digit; /* each digit composing the number */
+	char chardigit; /* the digit converted to char */
+	int div = 1; /* divisor */
 
-	integer = va_arg(allargs, int) + '0';
-	_putchar(integer);
-	(*charCount)++;
+	/* handle the case for negative numbers */
+	if (num < 0)
+	{
+		_putchar('-');
+		(*charCount)++;
+		num = -num; /* remove the minus */
+	}
+	while (num / div >= 10)
+		div *= 10;
+	while (div >= 1)
+	{
+		digit = (num / div) % 10; /* get the largest dogit */
+		chardigit = digit + '0'; /* the conversion from int to char */
+		_putchar (chardigit);
+		(*charCount)++;
+		div /= 10;
+	}
 }
