@@ -10,23 +10,51 @@
  */
 int _printf(const char *format, ...)
 {
-	int charCount;
-	const char *formatPtr;
+	int charCount;			 /* Number of chars printed to the screen */
+	const char *formatPtr;	 /* For traversing the character string */
+	char symbol, nextSymbol; /* tracks current char and the char next to it*/
+	char *printedStr;
 	va_list allargs;
 
 	formatPtr = format;
 	charCount = 0;
-
 	va_start(allargs, format);
 
-	/* blindly print characters without substitution */
+	/* Print chars while substituting where necessary */
 	while (*formatPtr != '\0')
 	{
-		_putchar(*formatPtr);
-		formatPtr++;
-		charCount++;
+		symbol = *formatPtr;
+		if (symbol == '%')
+		{
+			nextSymbol = *(formatPtr + 1);
+			switch (nextSymbol)
+			{
+			case 'c':
+				_putchar(va_arg(allargs, int));
+				charCount++;
+				break;
+			case 's':
+				printedStr = va_arg(allargs, char *);
+				_puts(printedStr);
+				/* add up all chars in the string */
+				charCount += _strlen(printedStr);
+				break;
+			case '%':
+				_putchar('%');
+				charCount++;
+				break;
+			default:
+				break;
+			}
+			formatPtr += 2; /* Skip past the char after the % */
+		}
+		else
+		{
+			_putchar(symbol);
+			charCount++;
+			formatPtr += 1;
+		}
 	}
-
 	va_end(allargs);
 
 	return (charCount);
