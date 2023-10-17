@@ -15,7 +15,7 @@ int _strlen(const char *s);
 int _puts(char *s);
 
 /* Prints the next character found in the va_list of arguments provided. */
-void _subChar(va_list allargs, int *charCount);
+int _subChar(va_list allargs, int *charCount);
 
 /* Prints the next string found in the va_list of arguments provided. */
 int _subStr(va_list allargs, int *charCount);

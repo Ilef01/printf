@@ -8,9 +8,11 @@
  * @charCount: Pointer to the number of chars that have been printed so far.
  * Description: Prints the next character found in the va_list of
  *              arguments provided.
+ * Return: 0 on success, non-negative number otherwise.
  */
-void _subChar(va_list allargs, int *charCount)
+int _subChar(va_list allargs, int *charCount)
 {
 	_putchar(va_arg(allargs, int));
 	(*charCount)++;
+	return (0);
 }
