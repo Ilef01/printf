@@ -59,31 +59,20 @@ int _printf(const char *format, ...)
  */
 void substitute(va_list allargs, int *charCount, char nextSymbol)
 {
-	switch (nextSymbol)
-	{
-	case 'c':
+	if (nextSymbol == 'c')
 		_subChar(allargs, charCount);
-		break;
-	case 's':
+	else if (nextSymbol == 's')
 		_subStr(allargs, charCount);
-		break;
-	case '%':
+	else if (nextSymbol == '%')
 		_subPercent(charCount);
-		break;
-	case 'd':
+	else if (nextSymbol == 'd')
 		_subDecimal(allargs, charCount);
-		break;
-	case 'i':
+	else if (nextSymbol == 'i')
 		_subInt(allargs, charCount);
-		break;
-	case 'b':
+	else if (nextSymbol == 'b')
 		_subBin(allargs, charCount);
-		break;
-	case 'r':
+	else if (nextSymbol == 'r')
 		_subReverse(allargs, charCount);
-		break;
-	default:
+	else
 		_subUnknown(nextSymbol, charCount);
-		break;
-	}
 }
