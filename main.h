@@ -14,6 +14,12 @@ int _strlen(const char *s);
 /* Prints the provided string to the screen, without a newline at the end */
 int _puts(char *s);
 
+/*
+ * Prints characters, depending on the character that came after
+ * the % sign in the potential format specifier.
+ */
+void substitute(va_list allargs, int *charCount, char symbol);
+
 /* Prints the next character found in the va_list of arguments provided. */
 int _subChar(va_list allargs, int *charCount);
 
