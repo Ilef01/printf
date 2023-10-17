@@ -64,8 +64,7 @@ void substitute(va_list allargs, int *charCount, char nextSymbol)
 		_subStr(allargs, charCount);
 		break;
 	case '%':
-		_putchar('%');
-		(*charCount)++;
+		_subPercent(charCount);
 		break;
 	case 'd':
 		_subDecimal(allargs, charCount);

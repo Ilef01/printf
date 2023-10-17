@@ -26,4 +26,7 @@ void _subDecimal(va_list allargs, int *charCount);
 /*Print the next integer found in the va_list of arguments provided. */
 void _subInt(va_list allargs, int *charCount);
 
+/* Prints the percent sign. */
+void _subPercent(int *charCount);
+
 #endif
