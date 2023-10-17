@@ -2,8 +2,6 @@
 #include <stdarg.h>
 #include <stddef.h>
 
-void substitute(va_list allargs, int *charCount, char nextSymbol);
-
 /**
  * _printf - Prints a formatted string to the standard output stream.
  * @format: The character string, that will contain zero or more directives.
@@ -32,7 +30,7 @@ int _printf(const char *format, ...)
 		if (symbol == '%')
 		{
 			nextSymbol = *(formatPtr + 1);
-			substitute(allargs, &charCount, nextSymbol);
+			_substitute(allargs, &charCount, nextSymbol);
 			formatPtr += 2; /* Skip past the char after the % */
 		}
 		else

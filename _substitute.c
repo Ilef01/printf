@@ -2,7 +2,7 @@
 #include "main.h"
 
 /**
- * substitute - Prints characters, depending on the character that came after
+ * _substitute - Prints characters, depending on the character that came after
  *              the % sign in the potential format specifier.
  * @allargs: The va_list item that contains the arguments passed into _printf.
  * @charCount: The number of characters that have been printed so far.
@@ -11,7 +11,7 @@
  * Description: Prints characters, depending on the character that came after
  *              the % sign in the format specifier.
  */
-void substitute(va_list allargs, int *charCount, char symbol)
+void _substitute(va_list allargs, int *charCount, char symbol)
 {
 	if (symbol == 'c')
 		_subChar(allargs, charCount);
