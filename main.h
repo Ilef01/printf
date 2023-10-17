@@ -29,4 +29,7 @@ void _subInt(va_list allargs, int *charCount);
 /* Prints the percent sign. */
 void _subPercent(int *charCount);
 
+/* Prints an unknown format specifier as is, with its preceding '%'sign */
+int _subUnknown(char unknownSpecifier, int *charCount);
+
 #endif
