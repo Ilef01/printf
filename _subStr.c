@@ -20,7 +20,10 @@ int _subStr(va_list allargs, int *charCount)
 	Val = _puts(printedStr);
 
 	if (Val < 0)
+	{
+		_puts("Expected a string, but got NULL instead.");
 		return (-1);
+	}
 
 	/* add up all chars in the string */
 	(*charCount) += _strlen(printedStr);
