@@ -20,28 +20,32 @@ void _subBin(va_list allargs, int *charCount)
 	/* Print 'O' for the special case of decimal 0 */
 	if (decimal == 0)
 	{
-		binary[i] = '0';
+		_putchar('0');
 		(*charCount)++;
 	}
-	/* The conversion from decimal to binary */
-	while (decimal > 0)
+	else
 	{
-		binary[i] = decimal % 2;
-		decimal /= 2;
-		i++;
-	}
-	/* Printing the binary representation */
-	for (j = i - 1; j >= 0; j--)
-	{
-		if (binary[j] == 0)
+		/* The conversion from decimal to binary */
+		while (decimal > 0)
 		{
-			_putchar('0');
-			(*charCount)++;
+			binary[i] = decimal % 2;
+			decimal /= 2;
+			i++;
 		}
-		if (binary[j] == 1)
+
+		/* Printing the binary representation */
+		for (j = i - 1; j >= 0; j--)
 		{
-			_putchar('1');
-			(*charCount)++;
+			if (binary[j] == 0)
+			{
+				_putchar('0');
+				(*charCount)++;
+			}
+			if (binary[j] == 1)
+			{
+				_putchar('1');
+				(*charCount)++;
+			}
 		}
 	}
 }
