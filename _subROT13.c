@@ -22,7 +22,7 @@ int _subROT13(va_list allargs, int *charCount)
 
 	for (i = 0; i < strLen; i++)
 	{
-		_putchar(shiftChar(str[i], 13));
+		_putchar(_shiftChar(str[i], 13));
 		(*charCount)++;
 	}
 
