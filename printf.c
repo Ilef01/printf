@@ -52,27 +52,27 @@ int _printf(const char *format, ...)
  *              the % sign in the format specifier.
  * @allargs: The va_list item that contains the arguments passed into _printf.
  * @charCount: The number of characters that have been printed so far.
- * @nextSymbol: The character that came after the % sign of the potential
+ * @symbol: The character that came after the % sign of the potential
  *              format specifier.
  * Description: Prints characters, depending on the character that came after
  *              the % sign in the format specifier.
  */
-void substitute(va_list allargs, int *charCount, char nextSymbol)
+void substitute(va_list allargs, int *charCount, char symbol)
 {
-	if (nextSymbol == 'c')
+	if (symbol == 'c')
 		_subChar(allargs, charCount);
-	else if (nextSymbol == 's')
+	else if (symbol == 's')
 		_subStr(allargs, charCount);
-	else if (nextSymbol == '%')
+	else if (symbol == '%')
 		_subPercent(charCount);
-	else if (nextSymbol == 'd')
+	else if (symbol == 'd')
 		_subDecimal(allargs, charCount);
-	else if (nextSymbol == 'i')
+	else if (symbol == 'i')
 		_subInt(allargs, charCount);
-	else if (nextSymbol == 'b')
+	else if (symbol == 'b')
 		_subBin(allargs, charCount);
-	else if (nextSymbol == 'r')
+	else if (symbol == 'r')
 		_subReverse(allargs, charCount);
 	else
-		_subUnknown(nextSymbol, charCount);
+		_subUnknown(symbol, charCount);
 }
