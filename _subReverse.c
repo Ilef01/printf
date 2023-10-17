@@ -23,6 +23,9 @@ int _subReverse(va_list allargs, int *charCount)
 
 	strLen = _strlen(str);
 
+	if (strLen == 0)
+		return (0);
+
 	for (i = strLen; i >= 0; i--)
 	{
 		_putchar(str[i]);
