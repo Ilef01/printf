@@ -47,4 +47,7 @@ int _subUnknown(char unknownSpecifier, int *charCount);
 /* Prints the reversed version of the substituted string.*/
 int _subReverse(va_list allargs, int *charCount);
 
+/* Prints the rot13'ed string. */
+int _subROT13(va_list allargs, int *charCount);
+
 #endif
