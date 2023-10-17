@@ -26,4 +26,8 @@ void _subDecimal(va_list allargs, int *charCount);
 /*Print the next integer found in the va_list of arguments provided. */
 void _subInt(va_list allargs, int *charCount);
 
+/*Print the next decimal found in the va_list of arguments provided
+ *	in binary. */
+void _subBin(va_list allargs, int *charCount);
+
 #endif

@@ -72,6 +72,10 @@ void substitute(va_list allargs, int *charCount, char nextSymbol)
 		break;
 	case 'i':
 		_subInt(allargs, charCount);
+		break;
+	case 'b':
+		_subBin(allargs, charCount);
+		break;
 	default:
 		break;
 	}
