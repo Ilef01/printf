@@ -1,5 +1,6 @@
 #include "main.h"
 #include <stdarg.h>
+#include <stddef.h>
 
 void substitute(va_list allargs, int *charCount, char nextSymbol);
 
@@ -20,6 +21,9 @@ int _printf(const char *format, ...)
 	formatPtr = format;
 	charCount = 0;
 	va_start(allargs, format);
+
+	if (!formatPtr) /* NULL check. */
+		return (0);
 
 	/* Print chars while substituting where necessary */
 	while (*formatPtr != '\0')
