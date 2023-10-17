@@ -38,4 +38,7 @@ void _subPercent(int *charCount);
 /* Prints an unknown format specifier as is, with its preceding '%'sign */
 int _subUnknown(char unknownSpecifier, int *charCount);
 
+/* Prints the reversed version of the substituted string.*/
+int _subReverse(va_list allargs, int *charCount);
+
 #endif

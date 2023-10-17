@@ -75,6 +75,9 @@ void substitute(va_list allargs, int *charCount, char nextSymbol)
 	case 'b':
 		_subBin(allargs, charCount);
 		break;
+	case 'r':
+		_subReverse(allargs, charCount);
+		break;
 	default:
 		_subUnknown(nextSymbol, charCount);
 		break;
