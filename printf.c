@@ -71,7 +71,13 @@ void substitute(va_list allargs, int *charCount, char nextSymbol)
 		break;
 	case 'i':
 		_subInt(allargs, charCount);
-	default:
+		break;
+	default: 
+		/* unknown specifier characters should be printed anyway */
+		/* along with the % sign that came before them */
+		_putchar('%');
+		_putchar(nextSymbol);
+		(*charCount)+= 2;
 		break;
 	}
 }
