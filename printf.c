@@ -22,7 +22,7 @@ int _printf(const char *format, ...)
 	charCount = 0;
 	va_start(allargs, format);
 
-	if (!formatPtr) /* NULL check. */
+	if (!format) /* NULL check. */
 		return (0);
 
 	/* Print chars while substituting where necessary */
