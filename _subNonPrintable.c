@@ -4,11 +4,11 @@
 char *_getHex(int ch);
 
 /**
- * _subNonPrintable - Prints the string with a custom format for 
+ * _subNonPrintable - Prints the string with a custom format for
  *                    non-printable characters.
  * @allargs: The va_list that contains the string to be printed.
  * @charCount: Pointer to the number of chars that have been printed so far.
- * Description: Prints the string with a custom format for 
+ * Description: Prints the string with a custom format for
  *              non-printable characters.
  * Return: 0 on success, -1 otherwise.
  */
@@ -41,6 +41,12 @@ int _subNonPrintable(va_list allargs, int *charCount)
 	return (0);
 }
 
+/**
+ * _getHex - Returns the two-character hexadecimal conversion for the given char.
+ * @ch: The char whose hexadecimal conversion to get.
+ * Description: Returns the two-character hexadecimal conversion for the given char.
+ * Return: The two-character hexadecimal conversion for the given char.
+ */
 char *_getHex(int ch)
 {
 	char *hex_digits;
@@ -51,12 +57,12 @@ char *_getHex(int ch)
 	divisor = 16;
 	hex_digits = "0123456789ABCDEF";
 
-	while(ch > 0)
+	while (ch > 0)
 	{
 		remainder = ch % divisor;
 		hex_remainders[i] = hex_digits[remainder];
 		ch = ch / divisor;
 		i--;
 	}
-	return(hex_remainders);
+	return (hex_remainders);
 }
