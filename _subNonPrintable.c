@@ -1,7 +1,8 @@
 #include "main.h"
 #include <stdarg.h>
+#include <stdlib.h>
 
-char *_getHex(int ch);
+int *_getHexRep(int ch);
 
 /**
  * _subNonPrintable - Prints the string with a custom format for
@@ -14,9 +15,10 @@ char *_getHex(int ch);
  */
 int _subNonPrintable(va_list allargs, int *charCount)
 {
-	char *str, *hexString;
+	char *str;
+	int *hexRep;
 	int ch;
-	int i, strLen;
+	int i, j, strLen;
 
 	str = va_arg(allargs, char *);
 	strLen = _strlen(str);
@@ -24,12 +26,33 @@ int _subNonPrintable(va_list allargs, int *charCount)
 	for (i = 0; i < strLen; i++)
 	{
 		ch = str[i];
-		if ((ch > 0 && ch <= 32) || ch >= 127)
+		if ((ch > 0 && ch <= 32) || ch >= 127) /* non printable chars */
 		{
 			_puts("\\x");
-			hexString = _getHex(ch);
-			_puts(hexString);
-			(*charCount) += _strlen(hexString);
+			hexRep = _getHexRep(ch);
+			/* print 0 as 00 */
+			if (hexRep[0] + hexRep[1] == 0)
+			{
+				_puts("00");
+				(*charCount) += 2;
+			}
+			else if (hexRep[0] == 0 && hexRep != 0)
+			{
+				/* print single-digit numbers with a leading 0*/
+				_puts("0");
+				_putchar(hexRep[1]);
+				(*charCount) += 2;
+			}
+			else
+			{
+				for (j = 0; j < 2; j++)
+				{
+					/* print double-digit numbers as-is */
+					_putchar(hexRep[j]);
+					(*charCount)++;
+				}
+			}
+			free(hexRep);
 		}
 		else
 		{
@@ -42,21 +65,36 @@ int _subNonPrintable(va_list allargs, int *charCount)
 }
 
 /**
- * _getHex - Returns the two-character hexadecimal conversion for the given char.
- * @ch: The char whose hexadecimal conversion to get.
- * Description: Returns the two-character hexadecimal conversion for the given char.
- * Return: The two-character hexadecimal conversion for the given char.
+ * _getHexRep - Returns a pointer to an integer array of size 2,
+ *           that contains the hexadecimal representation of
+ *           the given char.
+ * @ch: The char whose hexadecimal representation to get.
+ * Description: Returns a pointer to an integer array of size 2,
+ *              that contains the hexadecimal representation of
+ *              the given char.
+ * Return: A pointer to an integer array of size 2,
+ *         that contains the hexadecimal representation of
+ *         the given char.
  */
-char *_getHex(int ch)
+int *_getHexRep(int ch)
 {
 	char *hex_digits;
-	char *hex_remainders = "00";
+	int *hex_remainders;
 	int i, divisor, remainder;
 
-	i = 1;
-	divisor = 16;
+	hex_remainders = malloc(sizeof(int) * 2);
 	hex_digits = "0123456789ABCDEF";
+	i = 1; /* store remainders from index 1, going backwards */
+	divisor = 16;
 
+	if (ch == 0)
+	{
+		hex_remainders[1] = 0;
+		hex_remainders[2] = 0;
+		return (hex_remainders);
+	}
+
+	/* ch to hexadecimal conversion */
 	while (ch > 0)
 	{
 		remainder = ch % divisor;
@@ -64,5 +102,6 @@ char *_getHex(int ch)
 		ch = ch / divisor;
 		i--;
 	}
+
 	return (hex_remainders);
 }
