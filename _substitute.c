@@ -29,6 +29,8 @@ void _substitute(va_list allargs, int *charCount, char symbol)
 		_subReverse(allargs, charCount);
 	else if (symbol == 'R')
 		_subROT13(allargs, charCount);
+	else if (symbol == 'S')
+		_subNonPrintable(allargs, charCount);
 	else
 		_subUnknown(symbol, charCount);
 }

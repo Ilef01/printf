@@ -50,4 +50,7 @@ int _subReverse(va_list allargs, int *charCount);
 /* Prints the rot13'ed string. */
 int _subROT13(va_list allargs, int *charCount);
 
+/* Prints the string with a custom format for non-printable characters. */
+int _subNonPrintable(va_list allargs, int *charCount);
+
 #endif
