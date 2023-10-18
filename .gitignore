@@ -54,5 +54,6 @@ dkms.conf
 # project-specific
 # files for testing results of compilation
 test-*
+/test*
 *.json
 main.c*
